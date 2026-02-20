@@ -12,6 +12,9 @@ var is_hot = false
 
 var current_state = states.EMPTY
 
+func get_current_state() -> int:
+	return current_state
+
 func discard_self():
 	call_deferred("queue_free")
 

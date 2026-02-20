@@ -101,14 +101,18 @@ func _input(event):
 
 func LMB_interact_with_object() -> void:
 	print("interacted with object")
-	var player_interactable_object = player_interactable_area.get_parent()
+	var interactable_obj = player_interactable_area.get_parent()
 	var has_mug = mug_held.get_child_count()
 	
-	if player_interactable_object.has_method("give_new_mug") and !has_mug:
-		pickup_mug(player_interactable_object)
-	elif player_interactable_object.has_method("get_ingredient") and has_mug:
-		add_ingredient_to_mug(player_interactable_object.get_ingredient())
-	else:
+	if interactable_obj.has_method("give_new_mug") and !has_mug:
+		pickup_mug(interactable_obj)
+	elif interactable_obj.has_method("get_ingredient") and has_mug:
+		add_ingredient_to_mug(interactable_obj.get_ingredient())
+	elif interactable_obj.has_method("take_mug"):
+		if has_mug:
+			interactable_obj.call_deferred("attempt_dispense", mug_held.get_child(0))
+		else:
+			attempt_take_mug_ownership(interactable_obj.attempt_give_finished_drink())
 		return
 	#player_interactable_object.call_deferred("interact", hook.claw, self)
 
@@ -125,6 +129,14 @@ func RMB_interact_with_object() -> void:
 func pickup_mug(mug_dispenser) -> void:
 	print('picked up mug')
 	var mug = mug_dispenser.give_new_mug()
+	attempt_take_mug_ownership(mug)
+
+
+func attempt_take_mug_ownership(mug) -> void:
+	if !mug:
+		printerr("No mug to take ownership of")
+		return
+	print("took ownership of mug")
 	mug_held.add_child(mug)
 	mug.position = Vector3(0,-0.39,-0.421)
 	mug.rotation_degrees = Vector3(14.8,0,0)

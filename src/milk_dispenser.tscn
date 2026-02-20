@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://nu3yagndiqi5"]
+
+[ext_resource type="PackedScene" uid="uid://b885fq5wjope3" path="res://assets/models/milk_dispenser.gltf" id="1_gq76v"]
+[ext_resource type="Script" uid="uid://ce465jxvklilg" path="res://src/hot_mug_dispenser.gd" id="3_4yjth"]
+[ext_resource type="Script" uid="uid://c1aw0ys6qgivi" path="res://src/cold_mug_dispenser.gd" id="3_nqcev"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nqcev"]
+radius = 0.1640625
+height = 0.5139847
+
+[node name="MilkDispenser" type="Node3D" unique_id=1636699530]
+
+[node name="blockbench_export" parent="." unique_id=1973800936 instance=ExtResource("1_gq76v")]
+
+[node name="HotMug" type="Node3D" parent="." unique_id=646210372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19, 0.056, -0.19)
+script = ExtResource("3_4yjth")
+
+[node name="InteractArea" type="Area3D" parent="HotMug" unique_id=1035682008]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HotMug/InteractArea" unique_id=1526200977]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.082454674, 0)
+shape = SubResource("CapsuleShape3D_nqcev")
+
+[node name="HotTimer" type="Timer" parent="HotMug" unique_id=1346560692]
+one_shot = true
+
+[node name="Holder" type="Node3D" parent="HotMug" unique_id=370506710]
+
+[node name="ColdMug" type="Node3D" parent="." unique_id=397339160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.19, 0.056, -0.19)
+script = ExtResource("3_nqcev")
+
+[node name="InteractArea" type="Area3D" parent="ColdMug" unique_id=1516526256]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ColdMug/InteractArea" unique_id=1130191627]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.082454674, 0)
+shape = SubResource("CapsuleShape3D_nqcev")
+
+[node name="ColdTimer" type="Timer" parent="ColdMug" unique_id=2098010137]
+one_shot = true
+
+[node name="Holder" type="Node3D" parent="ColdMug" unique_id=1064025871]
+
+[connection signal="timeout" from="HotMug/HotTimer" to="HotMug" method="_on_hot_timer_timeout"]
+[connection signal="timeout" from="ColdMug/ColdTimer" to="ColdMug" method="_on_cold_timer_timeout"]
