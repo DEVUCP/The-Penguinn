@@ -15,6 +15,11 @@ run/main_scene="res://src/test_scene.tscn"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+EconomyManager="*uid://d2ytvyvelyers"
+Ui="*uid://bxu6y45u0f3rv"
+
 [input]
 
 ui_left={
