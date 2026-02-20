@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://bxu6y45u0f3rv"]
+
+[ext_resource type="Script" uid="uid://c320ut0e20e2n" path="res://src/ui.gd" id="1_r5j2p"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g5euo"]
+font_size = 22
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=12516228]
+script = ExtResource("1_r5j2p")
+
+[node name="Control" type="Control" parent="." unique_id=1993620690]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control" unique_id=1200481242]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MoneyBox" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=1858070343]
+custom_minimum_size = Vector2(227, 0)
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="Control/HBoxContainer/MoneyBox" unique_id=643685342]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/MoneyBox/Panel" unique_id=54496731]
+layout_mode = 0
+offset_right = 57.0
+offset_bottom = 23.0
+text = "Money:"
+label_settings = SubResource("LabelSettings_g5euo")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=494234858]
+custom_minimum_size = Vector2(227, 0)
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=981547650]
+custom_minimum_size = Vector2(227, 0)
+layout_mode = 2
+
+[node name="VBoxContainer5" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=1748929294]
+custom_minimum_size = Vector2(227, 0)
+layout_mode = 2
+
+[node name="ReputationBox" type="VBoxContainer" parent="Control/HBoxContainer" unique_id=672250961]
+custom_minimum_size = Vector2(227, 0)
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="Control/HBoxContainer/ReputationBox" unique_id=758693240]
+layout_mode = 2
+max_value = 10.0
+step = 1.0
+value = 5.0
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/ReputationBox/ProgressBar" unique_id=523234399]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "reputation"
