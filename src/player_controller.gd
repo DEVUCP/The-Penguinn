@@ -48,11 +48,13 @@ func _physics_process(delta: float) -> void:
 	_update_camera(delta)
 	var result = shoot_mouse_ray()
 	var collider = get_collider_from_mouse_ray(result)
+	#print(collider)
 	var interactable = get_interactable(collider)
-	if interactable and self.global_position.distance_to(collider.global_position) > 4:
+	if interactable and self.global_position.distance_to(collider.global_position) > 10:
 		interactable = null
 	#print(collider)
 	update_player_interactable_object(interactable)
+	#print(interactable)
 	#update_player_interactable_object(get_interactable(get_collider_from_mouse_ray(shoot_mouse_ray())))
 
 func update_player_interactable_object(object):
@@ -91,6 +93,8 @@ func _input(event):
 		get_tree().quit()
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		pass
+	if event.is_action_pressed("interact") and player_interactable_area:
+		interact_with_object()
 	if event.is_action_pressed("LMB_interact") and player_interactable_area:
 		LMB_interact_with_object()
 	elif event.is_action_pressed("RMB_interact"):
@@ -98,6 +102,15 @@ func _input(event):
 	#if event.is_action_pressed("open_inventory"):
 		#hud.call_deferred("update_inventory", inventory.get_contents())
 		#hud.call_deferred("toggle_inventory")
+
+func interact_with_object() -> void:
+	var obj = player_interactable_area.get_parent()
+	var has_mug = mug_held.get_child_count()
+	if obj.has_method("take_order") and has_mug:
+		var mug = mug_held.get_child(0)
+		var item = mug.get_current_state()
+		obj.call_deferred("take_order", item)
+		discard_mug(mug)
 
 func LMB_interact_with_object() -> void:
 	print("interacted with object")
@@ -107,6 +120,7 @@ func LMB_interact_with_object() -> void:
 	if interactable_obj.has_method("give_new_mug") and !has_mug:
 		pickup_mug(interactable_obj)
 	elif interactable_obj.has_method("get_ingredient") and has_mug:
+		#print(interactable_obj.name)
 		add_ingredient_to_mug(interactable_obj.get_ingredient())
 	elif interactable_obj.has_method("take_mug"):
 		if has_mug:
@@ -147,7 +161,7 @@ func discard_mug(mug) -> void:
 
 func add_ingredient_to_mug(ingredient) -> void:
 	var mug = mug_held.get_child(0)
-	mug.call_deferred("add_ingredient",ingredient)
+	mug.add_ingredient(ingredient)
 
 func shoot_mouse_ray() -> Dictionary:
 	var space_state = get_world_3d().direct_space_state

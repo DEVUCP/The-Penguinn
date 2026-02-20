@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://commrff3x1g5" path="res://src/choco_dispenser.tscn" id="3_l1obu"]
 [ext_resource type="PackedScene" uid="uid://nu3yagndiqi5" path="res://src/milk_dispenser.tscn" id="4_8c4ux"]
 [ext_resource type="PackedScene" uid="uid://c11cwpefd5d2m" path="res://src/marshmellow_dispenser.tscn" id="5_wtt4b"]
+[ext_resource type="PackedScene" uid="uid://cu3ncelcvhjnh" path="res://src/customer_manager.tscn" id="7_lwd14"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sovdr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -48,11 +49,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8611299, 0)
 [node name="MugDispenser" parent="." unique_id=1382118397 instance=ExtResource("2_dmphg")]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 1.2160295, -2.1617427)
 
-[node name="ChocoDispenser" parent="." unique_id=1014591783 instance=ExtResource("3_l1obu")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.57170606, 1.1659882, -3.7921195)
-
 [node name="MilkDispenser" parent="." unique_id=1636699530 instance=ExtResource("4_8c4ux")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3270428, 2.1640267)
 
 [node name="MarshmellowDispenser" parent="." unique_id=11613639 instance=ExtResource("5_wtt4b")]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.42225027, 0.86790943, -2.6851404)
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, -5.7029705, 0.86790943, -2.6851404)
+
+[node name="CustomerManager" parent="." unique_id=1306574218 instance=ExtResource("7_lwd14")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.8930216, 0.65191174, 3.6854808)
+
+[node name="ChocoDispenser" parent="." unique_id=1861869731 instance=ExtResource("3_l1obu")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0.8202909, -4.4043746)
