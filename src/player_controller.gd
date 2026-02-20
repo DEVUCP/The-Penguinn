@@ -106,10 +106,8 @@ func LMB_interact_with_object() -> void:
 	
 	if player_interactable_object.has_method("give_new_mug") and !has_mug:
 		pickup_mug(player_interactable_object)
-	elif has_mug:
-		return
-	elif !player_interactable_object.has_method("discard_self") and has_mug:
-		add_ingredient_to_mug(player_interactable_object)
+	elif player_interactable_object.has_method("get_ingredient") and has_mug:
+		add_ingredient_to_mug(player_interactable_object.get_ingredient())
 	else:
 		return
 	#player_interactable_object.call_deferred("interact", hook.claw, self)
@@ -136,7 +134,8 @@ func discard_mug(mug) -> void:
 	mug.call_deferred("discard_self")
 
 func add_ingredient_to_mug(ingredient) -> void:
-	pass
+	var mug = mug_held.get_child(0)
+	mug.call_deferred("add_ingredient",ingredient)
 
 func shoot_mouse_ray() -> Dictionary:
 	var space_state = get_world_3d().direct_space_state

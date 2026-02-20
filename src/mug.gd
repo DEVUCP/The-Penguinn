@@ -17,7 +17,7 @@ func discard_self():
 
 func add_ingredient(ingredient : String) -> void:
 	match ingredient:
-		"choco":
+		"CHOCO":
 			attempt_add_choco()
 		"MILK_COLD":
 			attempt_add_milk("cold")

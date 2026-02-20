@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://commrff3x1g5"]
+
+[ext_resource type="Script" uid="uid://clqcm3refamx5" path="res://src/choco_dispenser.tscn.gd" id="1_8yt81"]
+[ext_resource type="PackedScene" uid="uid://2wicmm4aojh8" path="res://assets/models/chocolate_bar.gltf" id="2_8yt81"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uwrys"]
+radius = 0.83740234
+height = 1.6748047
+
+[node name="ChocoDispenser" type="Node3D" unique_id=1382118397]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("1_8yt81")
+
+[node name="InteractArea" type="Area3D" parent="." unique_id=603900755]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=1543878000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30444336, 0)
+shape = SubResource("CapsuleShape3D_uwrys")
+
+[node name="bars" type="Node3D" parent="." unique_id=1735973117]
+
+[node name="blockbench_export5" parent="bars" unique_id=2099266233 instance=ExtResource("2_8yt81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09930167, 0)
+
+[node name="blockbench_export6" parent="bars" unique_id=1127997261 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0.12475211, 0)
+
+[node name="blockbench_export7" parent="bars" unique_id=295997748 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9659258, 0, 0.25881907, 0, 1, 0, -0.25881907, 0, 0.9659258, 0, 0.14987901, 0)
+
+[node name="blockbench_export8" parent="bars" unique_id=1337668873 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9999999, 0, 1.8626451e-08, 0, 1, 0, -1.8626451e-08, 0, 0.9999999, 0, 0.17275164, 0)
+
+[node name="blockbench_export" parent="bars" unique_id=1912083881 instance=ExtResource("2_8yt81")]
+
+[node name="blockbench_export2" parent="bars" unique_id=1950289122 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0.025450438, 0)
+
+[node name="blockbench_export3" parent="bars" unique_id=1222698834 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9659258, 0, 0.25881907, 0, 1, 0, -0.25881907, 0, 0.9659258, 0, 0.050577354, 0)
+
+[node name="blockbench_export4" parent="bars" unique_id=298381457 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9999999, 0, 1.8626451e-08, 0, 1, 0, -1.8626451e-08, 0, 0.9999999, 0, 0.073449984, 0)
+
+[node name="blockbench_export9" parent="bars" unique_id=1620573979 instance=ExtResource("2_8yt81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.09930167, -0.25)
+
+[node name="blockbench_export10" parent="bars" unique_id=740151387 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0.12475211, -0.25)
+
+[node name="blockbench_export11" parent="bars" unique_id=1189902862 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9659258, 0, 0.25881907, 0, 1, 0, -0.25881907, 0, 0.9659258, 0, 0.14987901, -0.25)
+
+[node name="blockbench_export12" parent="bars" unique_id=2016998223 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9999999, 0, 1.8626451e-08, 0, 1, 0, -1.8626451e-08, 0, 0.9999999, 0, 0.17275164, -0.25)
+
+[node name="blockbench_export13" parent="bars" unique_id=1292996010 instance=ExtResource("2_8yt81")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+
+[node name="blockbench_export14" parent="bars" unique_id=121857267 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9659258, 0, -0.25881904, 0, 1, 0, 0.25881904, 0, 0.9659258, 0, 0.025450438, -0.25)
+
+[node name="blockbench_export15" parent="bars" unique_id=214680078 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9659258, 0, 0.25881907, 0, 1, 0, -0.25881907, 0, 0.9659258, 0, 0.050577354, -0.25)
+
+[node name="blockbench_export16" parent="bars" unique_id=178002150 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9999999, 0, 1.8626451e-08, 0, 1, 0, -1.8626451e-08, 0, 0.9999999, 0, 0.073449984, -0.25)
+
+[node name="blockbench_export17" parent="bars" unique_id=1815211120 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0, 0.09930167, 0.28334183)
+
+[node name="blockbench_export18" parent="bars" unique_id=1050164596 instance=ExtResource("2_8yt81")]
+transform = Transform3D(1, 0, -1.8626451e-08, 0, 1, 0, 1.8626451e-08, 0, 1, 0, 0.12475211, 0.28334183)
+
+[node name="blockbench_export19" parent="bars" unique_id=571739234 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.8660253, 0, 0.49999997, 0, 1, 0, -0.49999997, 0, 0.8660253, 0, 0.14987901, 0.28334183)
+
+[node name="blockbench_export20" parent="bars" unique_id=380118663 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9659257, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659257, 0, 0.17275164, 0.28334183)
+
+[node name="blockbench_export21" parent="bars" unique_id=1040192762 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, 0, 0, 0.28334183)
+
+[node name="blockbench_export22" parent="bars" unique_id=1289979837 instance=ExtResource("2_8yt81")]
+transform = Transform3D(1, 0, -1.8626451e-08, 0, 1, 0, 1.8626451e-08, 0, 1, 0, 0.025450438, 0.28334183)
+
+[node name="blockbench_export23" parent="bars" unique_id=1321013383 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.8660253, 0, 0.49999997, 0, 1, 0, -0.49999997, 0, 0.8660253, 0, 0.050577354, 0.28334183)
+
+[node name="blockbench_export24" parent="bars" unique_id=376959183 instance=ExtResource("2_8yt81")]
+transform = Transform3D(0.9659257, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659257, 0, 0.073449984, 0.28334183)
