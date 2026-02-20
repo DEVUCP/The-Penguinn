@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://6gij00pcgk2g" path="res://src/mug_dispenser.tscn" id="2_dmphg"]
 [ext_resource type="PackedScene" uid="uid://commrff3x1g5" path="res://src/choco_dispenser.tscn" id="3_l1obu"]
 [ext_resource type="PackedScene" uid="uid://nu3yagndiqi5" path="res://src/milk_dispenser.tscn" id="4_8c4ux"]
+[ext_resource type="PackedScene" uid="uid://c11cwpefd5d2m" path="res://src/marshmellow_dispenser.tscn" id="5_wtt4b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sovdr"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -52,3 +53,6 @@ transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.57170606, 1.1659882, 
 
 [node name="MilkDispenser" parent="." unique_id=1636699530 instance=ExtResource("4_8c4ux")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3270428, 2.1640267)
+
+[node name="MarshmellowDispenser" parent="." unique_id=11613639 instance=ExtResource("5_wtt4b")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0.42225027, 0.86790943, -2.6851404)

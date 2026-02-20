@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://c11cwpefd5d2m"]
+
+[ext_resource type="Script" uid="uid://6x6330cxp0rg" path="res://src/marshmellow_dispenser.tscn.gd" id="1_uhr52"]
+[ext_resource type="PackedScene" uid="uid://dts0keds04i1h" path="res://assets/models/marshmellows.gltf" id="2_uhr52"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uwrys"]
+radius = 0.83740234
+height = 1.6748047
+
+[node name="MarshmellowDispenser" type="Node3D" unique_id=1382118397]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("1_uhr52")
+
+[node name="InteractArea" type="Area3D" parent="." unique_id=603900755]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=1543878000]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30444336, 0)
+shape = SubResource("CapsuleShape3D_uwrys")
+
+[node name="blockbench_export" parent="." unique_id=827559596 instance=ExtResource("2_uhr52")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
