@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://0ttcxnu27vhr"]
+
+[ext_resource type="PackedScene" uid="uid://cnlbpsurhs2p6" path="res://assets/models/mug.gltf" id="1_8auj3"]
+[ext_resource type="Script" uid="uid://cnb32gwgvxsqb" path="res://src/mug.gd" id="1_blaol"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_blaol"]
+radius = 0.45458984
+height = 1.0073242
+
+[node name="Mug" type="Node3D" unique_id=1225875239]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+script = ExtResource("1_blaol")
+
+[node name="blockbench_export" parent="." unique_id=306433958 instance=ExtResource("1_8auj3")]
+
+[node name="milk" parent="blockbench_export" index="1" unique_id=66113208]
+visible = false
+
+[node name="marshmellows" parent="blockbench_export" index="2" unique_id=227287085]
+visible = false
+
+[node name="chocolates" parent="blockbench_export" index="3" unique_id=1945061630]
+visible = false
+
+[node name="InteractArea" type="Area3D" parent="." unique_id=337471119]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=364946986]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30444336, 0)
+shape = SubResource("CapsuleShape3D_blaol")
+
+[editable path="blockbench_export"]

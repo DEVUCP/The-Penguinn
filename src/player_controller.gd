@@ -13,6 +13,14 @@ const JUMP_VELOCITY = 4.5
 @onready var fire_ray = $Camera3D/RayCast3D
 @onready var inventory = $Inventory
 @onready var hud = $Camera3D/HUD
+@onready var mug_held = $Camera3D/MugHeld
+
+var _mouse_input : bool = false
+var _mouse_rotation : Vector3
+var _rotation_input : float
+var _tilt_input : float
+var _player_rotation : Vector3
+var _camera_rotation : Vector3
 
 var player_interactable_area
 
@@ -49,12 +57,12 @@ func _physics_process(delta: float) -> void:
 
 func update_player_interactable_object(object):
 	if object:
-		if object != player_interactable_area and player_interactable_area:
-				attempt_toggle_interactable_billboard(false, player_interactable_area.get_parent()) 
+		#if object != player_interactable_area and player_interactable_area:
+				#attempt_toggle_interactable_billboard(false, player_interactable_area.get_parent()) 
 		set_player_interactable_object(object)
 	else:
-		if player_interactable_area:
-			attempt_toggle_interactable_billboard(false, player_interactable_area.get_parent())
+		#if player_interactable_area:
+			#attempt_toggle_interactable_billboard(false, player_interactable_area.get_parent())
 		set_player_interactable_object(null)
 
 func set_player_interactable_object(area):
@@ -71,13 +79,6 @@ func attempt_toggle_interactable_billboard(val : bool, object) -> void:
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
-var _mouse_input : bool = false
-var _mouse_rotation : Vector3
-var _rotation_input : float
-var _tilt_input : float
-var _player_rotation : Vector3
-var _camera_rotation : Vector3
-
 
 func _unhandled_input(event):
 	_mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
@@ -90,15 +91,52 @@ func _input(event):
 		get_tree().quit()
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
 		pass
-	#if event.is_action_pressed("interact") and player_interactable_area:
-		#interact_with_object()
+	if event.is_action_pressed("LMB_interact") and player_interactable_area:
+		LMB_interact_with_object()
+	elif event.is_action_pressed("RMB_interact"):
+		RMB_interact_with_object()
 	#if event.is_action_pressed("open_inventory"):
 		#hud.call_deferred("update_inventory", inventory.get_contents())
 		#hud.call_deferred("toggle_inventory")
 
-func interact_with_object() -> void:
+func LMB_interact_with_object() -> void:
+	print("interacted with object")
 	var player_interactable_object = player_interactable_area.get_parent()
+	var has_mug = mug_held.get_child_count()
+	
+	if player_interactable_object.has_method("give_new_mug") and !has_mug:
+		pickup_mug(player_interactable_object)
+	elif has_mug:
+		return
+	elif !player_interactable_object.has_method("discard_self") and has_mug:
+		add_ingredient_to_mug(player_interactable_object)
+	else:
+		return
 	#player_interactable_object.call_deferred("interact", hook.claw, self)
+
+func RMB_interact_with_object() -> void:
+	print("right click interact")
+	var has_mug = mug_held.get_child_count()
+	if has_mug:
+		var mug = mug_held.get_child(0)
+		discard_mug(mug)
+	else:
+		printerr("No mug in hand to discard")
+		return
+
+func pickup_mug(mug_dispenser) -> void:
+	print('picked up mug')
+	var mug = mug_dispenser.give_new_mug()
+	mug_held.add_child(mug)
+	mug.position = Vector3(0,-0.39,-0.421)
+	mug.rotation_degrees = Vector3(14.8,0,0)
+
+func discard_mug(mug) -> void:
+	print('discarded mug')
+	mug.call_deferred("discard_self")
+
+func add_ingredient_to_mug(ingredient) -> void:
+	pass
 
 func shoot_mouse_ray() -> Dictionary:
 	var space_state = get_world_3d().direct_space_state
@@ -128,7 +166,7 @@ func get_interactable(object_looked_at):
 	if !object_looked_at:
 		return null
 	if object_looked_at.get_parent().has_method("get_interactable"):
-		attempt_toggle_interactable_billboard(true, object_looked_at.get_parent())
+		#attempt_toggle_interactable_billboard(true, object_looked_at.get_parent())
 		return object_looked_at
 	else:
 		return null
