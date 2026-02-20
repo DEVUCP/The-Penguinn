@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bdgthke283svq"]
+
+[ext_resource type="PackedScene" uid="uid://cbp1l7joajh4g" path="res://src/player_controller.tscn" id="1_sovdr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_sovdr"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_dmphg"]
+sky_material = SubResource("ProceduralSkyMaterial_sovdr")
+
+[sub_resource type="Environment" id="Environment_l1obu"]
+background_mode = 2
+sky = SubResource("Sky_dmphg")
+tonemap_mode = 2
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_dmphg"]
+data = PackedVector3Array(-5, -0.5, 6.5, -5, -0.5, -6.5, -5, 0.5, -6.5, 5, -0.5, -6.5, -5, -0.5, -6.5, -5, -0.5, 6.5, -5, 0.5, -6.5, -5, -0.5, -6.5, 5, -0.5, -6.5, -5, 0.5, -6.5, -5, 0.5, 6.5, -5, -0.5, 6.5, -5, -0.5, 6.5, -5, 0.5, 6.5, 5, 0.5, 6.5, 5, 0.5, 6.5, -5, 0.5, 6.5, -5, 0.5, -6.5, -5, -0.5, 6.5, 5, -0.5, 6.5, 5, -0.5, -6.5, 5, 0.5, 6.5, 5, -0.5, 6.5, -5, -0.5, 6.5, 5, -0.5, -6.5, 5, -0.5, 6.5, 5, 0.5, 6.5, 5, -0.5, -6.5, 5, 0.5, -6.5, -5, 0.5, -6.5, -5, 0.5, -6.5, 5, 0.5, -6.5, 5, 0.5, 6.5, 5, 0.5, 6.5, 5, 0.5, -6.5, 5, -0.5, -6.5)
+
+[node name="TestScene" type="Node3D" unique_id=1647082774]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1982261765]
+environment = SubResource("Environment_l1obu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1682979543]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=67677844]
+collision_layer = 4
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1328220125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+shape = SubResource("ConcavePolygonShape3D_dmphg")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="StaticBody3D" unique_id=82533577]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+size = Vector3(10, 1, 13)
+
+[node name="PlayerController" parent="." unique_id=698889221 instance=ExtResource("1_sovdr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8611299, 0)
