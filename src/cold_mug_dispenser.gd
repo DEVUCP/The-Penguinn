@@ -20,7 +20,6 @@ func take_mug(mug : Node3D) -> void:
 
 func attempt_dispense(mug) -> void:
 	attempt_take_mug(mug)
-	start_dispensing()
 
 func attempt_take_mug(mug : Node3D) -> void:
 	if holder.get_child_count():
@@ -30,6 +29,7 @@ func attempt_take_mug(mug : Node3D) -> void:
 		printerr("Put chocolate first")
 		return
 	take_mug(mug)
+	start_dispensing()
 
 func start_dispensing() -> void:
 	cold_timer.start(cold_time)
