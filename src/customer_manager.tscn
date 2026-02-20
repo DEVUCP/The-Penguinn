@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cu3ncelcvhjnh"]
+
+[ext_resource type="Script" uid="uid://spq4qydhjfjo" path="res://src/customer_manager.gd" id="1_4v2g5"]
+[ext_resource type="Script" uid="uid://bg78ji0n70hrf" path="res://src/queue.gd" id="1_8bxve"]
+
+[node name="CustomerManager" type="Node3D" unique_id=1306574218]
+script = ExtResource("1_4v2g5")
+
+[node name="Queue" type="Node3D" parent="." unique_id=340316113]
+script = ExtResource("1_8bxve")
+
+[node name="SpawnTimer" type="Timer" parent="." unique_id=46164330]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
