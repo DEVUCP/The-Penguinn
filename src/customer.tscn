@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b2qrby43d7h0q"]
+
+[ext_resource type="PackedScene" uid="uid://crty76jgqfaup" path="res://assets/models/penguin.gltf" id="1_ac51m"]
+[ext_resource type="Script" uid="uid://cjq4kbka5veo3" path="res://src/customer.gd" id="1_ae2sf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ae2sf"]
+radius = 0.7626953
+height = 2.4204102
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ae2sf"]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8rmds"]
+radius = 0.1
+height = 0.2
+
+[node name="Customer" type="Node3D" unique_id=97073768]
+script = ExtResource("1_ae2sf")
+
+[node name="InteractArea" type="Area3D" parent="." unique_id=1602116200]
+collision_layer = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea" unique_id=1092844102]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6772461, 0)
+shape = SubResource("CapsuleShape3D_ae2sf")
+
+[node name="blockbench_export" parent="." unique_id=974738517 instance=ExtResource("1_ac51m")]
+
+[node name="ToleranceTimer" type="Timer" parent="." unique_id=1311710167]
+one_shot = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1797690985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.97962904, -0.29152262)
+material_override = SubResource("StandardMaterial3D_ae2sf")
+mesh = SubResource("CapsuleMesh_8rmds")
+
+[connection signal="timeout" from="ToleranceTimer" to="." method="_on_tolerance_timer_timeout"]
