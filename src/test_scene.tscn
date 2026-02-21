@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bdgthke283svq"]
 
+[ext_resource type="Script" uid="uid://bp1y3jpohpldy" path="res://src/test_scene.gd" id="1_57l5a"]
 [ext_resource type="PackedScene" uid="uid://cbp1l7joajh4g" path="res://src/player_controller.tscn" id="1_sovdr"]
 [ext_resource type="PackedScene" uid="uid://6gij00pcgk2g" path="res://src/mug_dispenser.tscn" id="2_dmphg"]
 [ext_resource type="PackedScene" uid="uid://commrff3x1g5" path="res://src/choco_dispenser.tscn" id="3_l1obu"]
@@ -23,6 +24,7 @@ tonemap_mode = 2
 data = PackedVector3Array(-5, -0.5, 6.5, -5, -0.5, -6.5, -5, 0.5, -6.5, 5, -0.5, -6.5, -5, -0.5, -6.5, -5, -0.5, 6.5, -5, 0.5, -6.5, -5, -0.5, -6.5, 5, -0.5, -6.5, -5, 0.5, -6.5, -5, 0.5, 6.5, -5, -0.5, 6.5, -5, -0.5, 6.5, -5, 0.5, 6.5, 5, 0.5, 6.5, 5, 0.5, 6.5, -5, 0.5, 6.5, -5, 0.5, -6.5, -5, -0.5, 6.5, 5, -0.5, 6.5, 5, -0.5, -6.5, 5, 0.5, 6.5, 5, -0.5, 6.5, -5, -0.5, 6.5, 5, -0.5, -6.5, 5, -0.5, 6.5, 5, 0.5, 6.5, 5, -0.5, -6.5, 5, 0.5, -6.5, -5, 0.5, -6.5, -5, 0.5, -6.5, 5, 0.5, -6.5, 5, 0.5, 6.5, 5, 0.5, 6.5, 5, 0.5, -6.5, 5, -0.5, -6.5)
 
 [node name="TestScene" type="Node3D" unique_id=1647082774]
+script = ExtResource("1_57l5a")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1982261765]
 environment = SubResource("Environment_l1obu")

@@ -25,6 +25,8 @@ var _camera_rotation : Vector3
 var player_interactable_area
 
 func _physics_process(delta: float) -> void:
+	if Ui.game_ended == true:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += (get_gravity() * 0.5) * delta
@@ -83,12 +85,14 @@ func _ready():
 
 
 func _unhandled_input(event):
-	_mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
+	_mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED and !Ui.game_ended
 	if _mouse_input :
 		_rotation_input = -event.relative.x * MOUSE_SENSITIVITY
 		_tilt_input = -event.relative.y * MOUSE_SENSITIVITY
 
 func _input(event):
+	if Ui.game_ended == true:
+		return
 	if event.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():

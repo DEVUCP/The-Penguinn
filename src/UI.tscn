@@ -6,6 +6,8 @@
 font_size = 22
 
 [node name="CanvasLayer" type="CanvasLayer" unique_id=12516228]
+process_mode = 3
+process_priority = -2
 script = ExtResource("1_r5j2p")
 
 [node name="Control" type="Control" parent="." unique_id=1993620690]
